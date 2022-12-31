@@ -97,5 +97,6 @@ class StoreTest extends TestCase {
         $store = Store::factory()->create();
         $response = $this->request->delete("/api/stores/" . $store->id);
         $response->assertNoContent();
+        $this->assertSoftDeleted('stores', ['id' => $store->id]);
     }
 }

@@ -29,8 +29,8 @@ class StoreController extends Controller {
             'banner' => 'required|max:500'
         ]);
         $data['user_id'] = $request->user()->id;
-        $data['icon'] = $this->uploadFile($request->file('icon'));
-        $data['banner'] = $this->uploadFile($request->file('banner'));
+        if($request->hasFile('icon')) $data['icon'] = $this->uploadFile($request->file('icon'));
+        if($request->hasFile('banner')) $data['banner'] = $this->uploadFile($request->file('banner'));
         return response()->json(Store::create($data), 201);
     }
 
@@ -41,10 +41,13 @@ class StoreController extends Controller {
     }
 
     public function show($id): JsonResponse {
-        return response()->json(Store::findOrFail($id));
+        $store = Store::findOrFail($id);
+        $this->authorize('view', $store);
+        return response()->json($store);
     }
 
     public function update(Request $request, $id) {
+        $this->authorize('update', Store::findOrFail($id));
         $request->validate([
             'latitude' => 'numeric|between:-90,90',
             'longitude' => 'numeric|between:-180,180',
@@ -54,14 +57,15 @@ class StoreController extends Controller {
             'banner' => 'max:500'
         ]);
         $data = $request->all();
-        $data['icon'] = $this->uploadFile($request->file('icon'));
-        $data['banner'] = $this->uploadFile($request->file('banner'));
+        if($request->hasFile('icon')) $data['icon'] = $this->uploadFile($request->file('icon'));
+        if($request->hasFile('banner')) $data['banner'] = $this->uploadFile($request->file('banner'));
         Store::where('id', $id)->update($data);
         return response()->json(null, 204);
     }
 
     public function destroy($id): JsonResponse {
         $store = Store::findOrFail($id);
+        $this->authorize('delete', $store);
         if ($store->icon) Storage::disk('public')->delete("uploads/{$store->icon}");
         if ($store->banner) Storage::disk('public')->delete("uploads/{$store->banner}");
         $store->delete();
