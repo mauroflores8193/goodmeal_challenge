@@ -18,8 +18,8 @@ class CreateStoresTable extends Migration {
             $table->string("location");
             $table->string("latitude");
             $table->string("longitude");
-            $table->string("icon");
-            $table->string("banner");
+            $table->string("icon")->nullable();
+            $table->string("banner")->nullable();
             $table->time('start_time');
             $table->time('end_time');
             $table->double("score", 2, 1)->default(0);
