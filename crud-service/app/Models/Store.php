@@ -5,12 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class File extends Model {
+class Store extends Model {
     use SoftDeletes;
     protected $fillable = [
         'name',
-        'ext',
-        'path',
-        'size',
+        'address',
+        'location',
+        'lat',
+        'lng',
+        'start_time',
+        'end_time',
+        'user_id',
     ];
 }
