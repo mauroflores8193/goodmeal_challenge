@@ -22,7 +22,7 @@ class CreateStoresTable extends Migration {
             $table->string("banner");
             $table->time('start_time');
             $table->time('end_time');
-            $table->double("score", 2, 1);
+            $table->double("score", 2, 1)->default(0);
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
             $table->softDeletes();
