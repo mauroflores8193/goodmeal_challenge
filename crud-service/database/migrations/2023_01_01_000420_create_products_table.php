@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->decimal('price');
             $table->integer('discount')->default(0);
             $table->integer('amount')->default(0);
-            $table->integer('image');
+            $table->string('image');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use App\Models\Store;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
@@ -54,10 +53,6 @@ class StoreTest extends TestCase {
             });
         Storage::disk('public')->assertExists("uploads/{$lastStore->icon}");
         Storage::disk('public')->assertExists("uploads/{$lastStore->banner}");
-    }
-
-    private function createFakeImg($name = 'fake_img.jpg'): UploadedFile {
-        return UploadedFile::fake()->image($name);
     }
 
     public function testShow() {
