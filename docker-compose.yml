@@ -5,8 +5,7 @@ services:
             args:
                 user: maurosoft
                 uid: 1000
-            context: ./
-            dockerfile: Dockerfile
+            context: ./crud-service
         image: good-meal-crud-service
         container_name: good-meal-crud-service
         restart: unless-stopped
@@ -18,8 +17,6 @@ services:
 
     db:
         image: mysql:5.7
-        env_file:
-            - ./crud-service/.env
         container_name: good-meal-db
         restart: unless-stopped
         environment:
@@ -43,6 +40,19 @@ services:
         volumes:
             - ./crud-service:/var/www
             - ./docker-compose/nginx:/etc/nginx/conf.d
+        networks:
+            - good-meal
+
+    frontend:
+        container_name: good-meal-frontend
+        build:
+            context: frontend
+            target: development
+        ports:
+            - 8080:8080
+        volumes:
+            - ./frontend:/project
+            - /project/node_modules
         networks:
             - good-meal
 
