@@ -3,12 +3,7 @@
     <Header title="Detalle de la orden" url-back="/orders"/>
     <Card class="py-12">
       <h2 class="text-lg font-medium mb-4">{{ store.name }}</h2>
-      <DescriptionItem
-          v-for="(item, index) in infoItems"
-          :title="item.title"
-          :description="item.description"
-          :key="index"
-      />
+      <DescriptionItem v-for="(item, index) in infoItems" v-bind="item" :key="index"/>
       <hr class="my-4"/>
       <div class="font-medium">Productos</div>
       <div v-for="(item, index) in order.detail" :key="index" class="flex justify-between">
