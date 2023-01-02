@@ -1,8 +1,7 @@
 <template>
   <div class="bg-teal-50 px-6 h-full text-sm">
     <Header title="Detalle de la orden" url-back="/orders"/>
-    <div class="bg-white px-6 py-12 rounded-2xl shadow-card relative">
-      <Tag label="Rescatada" class="absolute top-0 right-6"/>
+    <Card class="py-12">
       <h2 class="text-lg font-medium mb-4">{{ store.name }}</h2>
       <DescriptionItem
           v-for="(item, index) in infoItems"
@@ -26,20 +25,20 @@
         <div class="font-medium">Monto total</div>
         <div class="font-medium">{{ order.total | formatPrice }}</div>
       </div>
-    </div>
+    </Card>
   </div>
 </template>
 
 <script>
 import DescriptionItem from "../molecules/DescriptionItem.vue"
-import Tag from "../atoms/Tag.vue";
 import Header from "../molecules/Header.vue";
+import Card from "../molecules/Card.vue";
 
 export default {
   name: "OrderDetail",
   components: {
+    Card,
     Header,
-    Tag,
     DescriptionItem,
   },
   data: function () {
