@@ -1,5 +1,5 @@
 const {
-  boxShadow
+  height
 } = require('tailwindcss/defaultTheme')
 
 module.exports = {
@@ -9,9 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      boxShadow: {
-        ...boxShadow,
-        'card': '2px -3px 17px rgba(72, 98, 124, 0.26)',
+      height: {
+        ...height,
+        '18': '4.5rem',
       },
     },
   },

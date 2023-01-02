@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "Tag",
+  name: "TagRoundedBottom",
   props: {
     label: String
   }
