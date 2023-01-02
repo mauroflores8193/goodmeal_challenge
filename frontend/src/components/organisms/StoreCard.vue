@@ -1,12 +1,10 @@
 <template>
   <div class="bg-white rounded-2xl border-4 border-gray-200">
-    <div class="relative">
-      <img :src="banner" class="rounded-t-xl h-18 w-full"/>
-      <img :src="icon" class="rounded-full absolute -bottom-6 right-8 w-16 h-16 bg-white"/>
+    <StoreHeader :icon="icon" :banner="banner">
       <FavoriteButton :active="isFavorite" class="absolute right-4 top-0" />
       <TagAttentionHours :label="attentionHours" class="absolute left-4 top-2"/>
       <TagDeliveryType :label="deliveryType" class="absolute left-4 bottom-2"/>
-    </div>
+    </StoreHeader>
     <div class="px-4 py-3">
       <div class="font-bold text-xl">{{ storeName }}</div>
       <div class="flex gap-2 mb-1">
@@ -38,10 +36,11 @@ import BuyBagIcon from '../../assets/images/icons/buy-bag.svg'
 import FavoriteButton from "../molecules/FavoriteButton.vue";
 import TagDeliveryType from "../atoms/TagDeliveryType.vue";
 import TagAttentionHours from "../atoms/TagAttentionHours.vue";
+import StoreHeader from "./StoreHeader.vue";
 
 export default {
   name: "StoreCard",
-  components: { TagAttentionHours, TagDeliveryType, FavoriteButton, WalkingIcon, MarkerIcon, BuyBagIcon },
+  components: { StoreHeader, TagAttentionHours, TagDeliveryType, FavoriteButton, WalkingIcon, MarkerIcon, BuyBagIcon },
   props: {
     storeName: String,
     banner: String,
