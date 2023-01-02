@@ -6,8 +6,8 @@
     <router-link to="/orders">
       <OrdersButton :active="$route.path === '/orders'"/>
     </router-link>
-    <router-link to="">
-      <ProfileButton/>
+    <router-link to="/profile">
+      <ProfileButton :active="$route.path === '/profile'"/>
     </router-link>
   </nav>
 </template>
