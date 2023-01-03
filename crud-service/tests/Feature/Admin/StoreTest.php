@@ -1,19 +1,19 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Admin;
 
 use App\Models\Store;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
-use App\Models\User;
 
 class StoreTest extends TestCase {
 
     public function setUp(): void {
         parent::setUp();
         Storage::fake('public');
-        $this->userAuth = User::all()->first();
+        $this->userAuth = User::factory()->create();
         $this->request = $this->actingAs($this->userAuth);
     }
 

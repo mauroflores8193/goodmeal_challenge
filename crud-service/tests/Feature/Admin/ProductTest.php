@@ -1,48 +1,48 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Admin;
 
 use App\Models\Product;
 use App\Models\Store;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
-use App\Models\User;
 
 class ProductTest extends TestCase {
 
     public function setUp(): void {
         parent::setUp();
         Storage::fake('public');
-        $this->userAuth = User::all()->first();
+        $this->userAuth = User::factory()->create();
         $this->store = Store::factory()->for($this->userAuth)->create();
         $this->request = $this->actingAs($this->userAuth);
     }
 
     public function testList() {
         Product::factory(10)->for($this->userAuth)->for($this->store)->create();
-        $response = $this->request->get("/api/admin/stores/".$this->store->id."/products");
+        $response = $this->request->get("/api/admin/stores/" . $this->store->id . "/products");
         $response->assertOk()->assertJsonCount(10);
     }
 
     public function testCreate() {
         $data = [
             'name' => 'name',
-            'price' => 15.50,
-            'discount' => 5,
+            'old_price' => 20,
+            'price' => 15,
             'amount' => 10,
             'image' => $this->createFakeImg('image.png'),
         ];
         $response = $this->request
             ->withHeaders(['Content-Type' => 'multipart/form-data; boundary=<calculated when request is sent>'])
-            ->post("/api/admin/stores/".$this->store->id."/products", $data);
+            ->post("/api/admin/stores/" . $this->store->id . "/products", $data);
         $lastProduct = Product::all()->last();
         $response->assertCreated()
             ->assertJson(function (AssertableJson $json) use ($lastProduct) {
                 $json->where('id', $lastProduct->id)
                     ->where('name', $lastProduct->name)
-                    ->where('price', $lastProduct->price)
-                    ->where('discount', $lastProduct->discount)
+                    ->where('price', (int) $lastProduct->price)
+                    ->where('old_price', (int) $lastProduct->old_price)
                     ->where('amount', $lastProduct->amount)
                     ->etc();
             });
@@ -59,8 +59,8 @@ class ProductTest extends TestCase {
         $product = $this->createProduct($this->userAuth, $this->store);
         $data = [
             'name' => 'new name',
-            'price' => 35.50,
-            'discount' => 50,
+            'old_price' => 150,
+            'price' => 100,
             'amount' => 100,
             'image' => $this->createFakeImg('image.png'),
         ];
@@ -69,7 +69,7 @@ class ProductTest extends TestCase {
         $lastProduct = Product::find($product->id);
         $this->assertEquals($lastProduct->name, $data['name']);
         $this->assertEquals($lastProduct->price, $data['price']);
-        $this->assertEquals($lastProduct->discount, $data['discount']);
+        $this->assertEquals($lastProduct->old_price, $data['old_price']);
         $this->assertEquals($lastProduct->amount, $data['amount']);
         Storage::disk('public')->assertExists("uploads/{$lastProduct->icon}");
         Storage::disk('public')->assertExists("uploads/{$lastProduct->banner}");

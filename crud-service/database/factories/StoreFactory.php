@@ -12,10 +12,11 @@ class StoreFactory extends Factory {
             'location' => $this->faker->paragraph(1),
             'latitude' => $this->faker->randomFloat(10, -90, 90),
             'longitude' => $this->faker->randomFloat(10, -180, 180),
+            'score' => $this->faker->randomFloat(1, 0, 5),
             'icon' => $this->getIcon(),
             'banner' => $this->getBanner(),
             'start_time' => $this->faker->time(),
-            'end_time' => $this->faker->time()
+            'end_time' => $this->faker->time(),
         ];
     }
 

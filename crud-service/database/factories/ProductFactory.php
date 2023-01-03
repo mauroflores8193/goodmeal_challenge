@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProductFactory extends Factory {
     public function definition() {
+        $oldPrice = $this->faker->randomFloat(0, 100, 10000);
+        $discount = $this->faker->numberBetween(1, 6) * 10;
         return [
             'name' => $this->faker->name(),
-            'price' => $this->faker->randomFloat(2, 0, 10000),
-            'discount' => $this->faker->numberBetween(1, 6) * 10,
+            'old_price' => $oldPrice,
+            'price' => $oldPrice * $discount / 100,
             'amount' => $this->faker->numberBetween(0, 50),
             'image' => $this->getImage()
         ];

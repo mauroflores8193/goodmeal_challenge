@@ -8,15 +8,18 @@ use App\Models\User;
 
 class AuthTest extends TestCase {
 
+    public function setUp(): void {
+        parent::setUp();
+        $this->newUer = User::factory()->create();
+    }
+
     public function test_login_ok() {
-        $user = User::all()->first();
-        $response = $this->postJson('/api/login', ['email' => $user->email, 'password' => 'password']);
+        $response = $this->postJson('/api/login', ['email' => $this->newUer->email, 'password' => 'password']);
         $response->assertOk();
     }
 
     public function test_login_password_failed() {
-        $user = User::all()->first();
-        $response = $this->postJson('/api/login', ['email' => $user->email, 'password' => 'fail']);
+        $response = $this->postJson('/api/login', ['email' => $this->newUer->email, 'password' => 'fail']);
         $response->assertUnauthorized();
     }
 
@@ -27,7 +30,7 @@ class AuthTest extends TestCase {
     }
 
     public function test_me() {
-        $user = User::all()->first();
+        $user = $this->newUer;
         $response = $this->actingAs($user)->get('/api/admin/me');
         $response
             ->assertOk()

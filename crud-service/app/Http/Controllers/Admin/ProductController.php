@@ -21,8 +21,8 @@ class ProductController extends Controller {
         if($store->user_id !== $request->user()->id) abort(403);
         $data = $request->validate([
             'name' => 'required',
+            'old_price' => 'required|numeric',
             'price' => 'required|numeric',
-            'discount' => 'numeric|between:0,100',
             'amount' => 'required|numeric'
         ]);
         $request->validate([
@@ -50,10 +50,9 @@ class ProductController extends Controller {
     public function update(Request $request, $id): JsonResponse {
         $this->authorize('update', Product::findOrFail($id));
         $request->validate([
-            'name' => 'required',
-            'price' => 'required|numeric',
-            'discount' => 'numeric|between:0,100',
-            'amount' => 'required|numeric'
+            'old_price' => 'numeric',
+            'price' => 'numeric',
+            'amount' => 'numeric'
         ]);
         $data = $request->all();
         if($request->hasFile('image')) $data['image'] = $this->uploadFile($request->file('image'));

@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string("name");
             $table->float('price');
-            $table->integer('discount')->default(0);
+            $table->float('old_price');
             $table->integer('amount')->default(0);
             $table->string('image');
             $table->timestamps();

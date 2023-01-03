@@ -10,8 +10,6 @@ abstract class TestCase extends BaseTestCase {
     use RefreshDatabase;
     use CreatesApplication;
 
-    protected $seed = true;
-
     protected function createFakeImg($name): UploadedFile {
         return UploadedFile::fake()->image($name);
     }
