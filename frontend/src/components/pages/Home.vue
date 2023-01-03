@@ -6,18 +6,18 @@
         <StoreCard v-bind="store"/>
       </router-link>
     </div>
-    <Footer/>
+    <Nav/>
   </div>
 </template>
 
 <script>
-import Footer from "../molecules/Footer.vue";
+import Nav from "../molecules/Nav.vue";
 import StoreCard from "../organisms/StoreCard.vue";
 import Header from "../molecules/Header.vue";
 
 export default {
   name: 'Home',
-  components: { Header, StoreCard, Footer },
+  components: { Header, StoreCard, Nav },
   data: function () {
     return {
       stores: [

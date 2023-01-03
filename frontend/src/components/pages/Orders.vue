@@ -4,18 +4,18 @@
     <div class="px-6 flex flex-col gap-4 flex-1 overflow-y-auto">
       <OrderCard v-for="(order, index) in orders" v-bind="order" :key="index" />
     </div>
-    <Footer />
+    <Nav />
   </div>
 </template>
 
 <script>
 import Header from "../molecules/Header.vue";
 import OrderCard from "../organisms/OrderCard.vue";
-import Footer from "../molecules/Footer.vue";
+import Nav from "../molecules/Nav.vue";
 
 export default {
   name: "Orders",
-  components: { OrderCard, Header, Footer },
+  components: { OrderCard, Header, Nav },
   data: function () {
     return {
       orders: [

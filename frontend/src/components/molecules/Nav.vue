@@ -18,7 +18,7 @@ import OrdersButton from "./OrdersButton.vue";
 import ProfileButton from "./ProfileButton.vue";
 
 export default {
-  name: "Footer",
+  name: "Nav",
   components: { ProfileButton, OrdersButton, HomeButton }
 }
 </script>

@@ -3,16 +3,16 @@
     <Header title="Perfil"/>
     <div class="px-6 flex flex-col gap-4 flex-1 overflow-y-auto">
     </div>
-    <Footer />
+    <Nav />
   </div>
 </template>
 
 <script>
 import Header from "../molecules/Header.vue";
-import Footer from "../molecules/Footer.vue";
+import Nav from "../molecules/Nav.vue";
 
 export default {
   name: "Profile",
-  components: { Header, Footer }
+  components: { Header, Nav }
 }
 </script>
