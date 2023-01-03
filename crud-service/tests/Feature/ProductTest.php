@@ -15,13 +15,13 @@ class ProductTest extends TestCase {
         parent::setUp();
         Storage::fake('public');
         $this->userAuth = User::all()->first();
-        $this->store = Store::factory()->create();
+        $this->store = Store::factory()->for($this->userAuth)->create();
         $this->request = $this->actingAs($this->userAuth);
     }
 
     public function testList() {
         Product::factory(10)->for($this->userAuth)->for($this->store)->create();
-        $response = $this->request->get("/api/stores/".$this->store->id."/products");
+        $response = $this->request->get("/api/admin/stores/".$this->store->id."/products");
         $response->assertOk()->assertJsonCount(10);
     }
 
@@ -35,7 +35,7 @@ class ProductTest extends TestCase {
         ];
         $response = $this->request
             ->withHeaders(['Content-Type' => 'multipart/form-data; boundary=<calculated when request is sent>'])
-            ->post("/api/stores/".$this->store->id."/products", $data);
+            ->post("/api/admin/stores/".$this->store->id."/products", $data);
         $lastProduct = Product::all()->last();
         $response->assertCreated()
             ->assertJson(function (AssertableJson $json) use ($lastProduct) {
@@ -51,7 +51,7 @@ class ProductTest extends TestCase {
 
     public function testShow() {
         $product = $this->createProduct($this->userAuth, $this->store);
-        $response = $this->request->get("/api/products/" . $product->id);
+        $response = $this->request->get("/api/admin/products/" . $product->id);
         $response->assertOk()->assertJson($product->toArray());
     }
 
@@ -64,7 +64,7 @@ class ProductTest extends TestCase {
             'amount' => 100,
             'image' => $this->createFakeImg('image.png'),
         ];
-        $response = $this->request->put("/api/products/" . $product->id, $data);
+        $response = $this->request->put("/api/admin/products/" . $product->id, $data);
         $response->assertNoContent();
         $lastProduct = Product::find($product->id);
         $this->assertEquals($lastProduct->name, $data['name']);
@@ -77,7 +77,7 @@ class ProductTest extends TestCase {
 
     public function testDestroy() {
         $product = $this->createProduct($this->userAuth, $this->store);
-        $response = $this->request->delete("/api/products/" . $product->id);
+        $response = $this->request->delete("/api/admin/products/" . $product->id);
         $response->assertNoContent();
         $this->assertSoftDeleted('products', ['id' => $product->id]);
     }

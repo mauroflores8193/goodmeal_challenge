@@ -1,11 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\StoreController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\StoreController as AdminStoreController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +16,12 @@ use App\Http\Controllers\AuthController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::middleware(['auth:sanctum'])->group(function () {
+Route::prefix('admin')->middleware(['auth:sanctum'])->group(function () {
     Route::get('/me', function (Request $request) {
         return $request->user();
     });
-    Route::apiResource('stores', StoreController::class);
-    Route::apiResource('stores.products', ProductController::class)->shallow();
+    Route::apiResource('stores', AdminStoreController::class);
+    Route::apiResource('stores.products', AdminProductController::class)->shallow();
 });
 
 Route::post('/login', [AuthController::class, 'login']);

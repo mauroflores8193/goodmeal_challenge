@@ -13,13 +13,13 @@ class StoreTest extends TestCase {
     public function setUp(): void {
         parent::setUp();
         Storage::fake('public');
-        $userAuth = User::all()->first();
-        $this->request = $this->actingAs($userAuth);
+        $this->userAuth = User::all()->first();
+        $this->request = $this->actingAs($this->userAuth);
     }
 
     public function testList() {
-        Store::factory(10)->create();
-        $response = $this->request->get('/api/stores');
+        Store::factory(10)->for($this->userAuth)->create();
+        $response = $this->request->get('/api/admin/stores');
         $response->assertOk()->assertJsonCount(10);
     }
 
@@ -37,7 +37,7 @@ class StoreTest extends TestCase {
         ];
         $response = $this->request
             ->withHeaders(['Content-Type' => 'multipart/form-data; boundary=<calculated when request is sent>'])
-            ->post('/api/stores', $data);
+            ->post('/api/admin/stores', $data);
         $lastStore = Store::all()->last();
         $response->assertCreated()
             ->assertJson(function (AssertableJson $json) use ($lastStore) {
@@ -56,13 +56,13 @@ class StoreTest extends TestCase {
     }
 
     public function testShow() {
-        $store = Store::factory()->create();
-        $response = $this->request->get("/api/stores/" . $store->id);
+        $store = $this->createProduct($this->userAuth);
+        $response = $this->request->get("/api/admin/stores/" . $store->id);
         $response->assertOk()->assertJson($store->toArray());
     }
 
     public function testUpdate() {
-        $store = Store::factory()->create();
+        $store = $this->createProduct($this->userAuth);
         $data = [
             'name' => 'new name',
             'address' => 'new address',
@@ -74,7 +74,7 @@ class StoreTest extends TestCase {
             'start_time' => '09:00:00',
             'end_time' => '16:00:00',
         ];
-        $response = $this->request->put("/api/stores/" . $store->id, $data);
+        $response = $this->request->put("/api/admin/stores/" . $store->id, $data);
         $response->assertNoContent();
         $lastStore = Store::find($store->id);
         $this->assertEquals($lastStore->name, $data['name']);
@@ -89,9 +89,13 @@ class StoreTest extends TestCase {
     }
 
     public function testDestroy() {
-        $store = Store::factory()->create();
-        $response = $this->request->delete("/api/stores/" . $store->id);
+        $store = $this->createProduct($this->userAuth);
+        $response = $this->request->delete("/api/admin/stores/" . $store->id);
         $response->assertNoContent();
         $this->assertSoftDeleted('stores', ['id' => $store->id]);
+    }
+
+    private function createProduct($user) {
+        return Store::factory()->for($user)->create();
     }
 }

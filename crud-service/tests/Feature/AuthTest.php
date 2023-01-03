@@ -28,7 +28,7 @@ class AuthTest extends TestCase {
 
     public function test_me() {
         $user = User::all()->first();
-        $response = $this->actingAs($user)->get('/api/me');
+        $response = $this->actingAs($user)->get('/api/admin/me');
         $response
             ->assertOk()
             ->assertJson(function (AssertableJson $json) use ($user) {
