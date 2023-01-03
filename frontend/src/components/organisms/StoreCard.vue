@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white rounded-2xl border-4 border-gray-200">
+  <div class="card">
     <StoreHeader :icon="icon" :banner="banner">
       <FavoriteButton :active="isFavorite" class="absolute right-4 top-0" />
       <TagAttentionHours :label="attentionHours" class="absolute left-4 top-2"/>
@@ -8,7 +8,7 @@
     <div class="px-4 py-3">
       <div class="font-bold text-xl">{{ storeName }}</div>
       <div class="flex gap-2 mb-1">
-        <div class="font-bold text-sm text-pink-600">Desde {{ minProductPrice | formatPrice }}</div>
+        <div class="price">Desde {{ minProductPrice | formatPrice }}</div>
         <div class="text-sm text-gray-400 text-bold line-through">{{ minProductRealPrice | formatPrice }}</div>
       </div>
       <div class="flex gap-6">

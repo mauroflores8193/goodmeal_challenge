@@ -3,5 +3,13 @@
 @tailwind utilities;
 
 .button-icon {
-    @apply flex flex-col items-center justify-center text-sm
+    @apply flex flex-col items-center justify-center text-sm;
+}
+
+.card {
+    @apply bg-white rounded-2xl border-4 border-gray-200;
+}
+
+.price {
+    @apply font-bold text-sm text-pink-600;
 }
