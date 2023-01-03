@@ -3,8 +3,13 @@ import App from './App.vue'
 import router from './router'
 
 import './assets/styles/index.css'
+
 Vue.filter("formatPrice", function (value) {
-  return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'USD' }).format(value);
+  return new Intl.NumberFormat('es-CL', {
+    style: 'currency',
+    currency: 'CLP',
+    currencyDisplay: 'narrowSymbol'
+  }).format(value)
 })
 
 new Vue({

@@ -10,7 +10,11 @@
         <div class="w-6">
           <MarkerIcon class="w-6 h-6"/>
         </div>
-        <a href="#" target="_blank" class="text-pink-600 underline leading-6">{{ location }}</a>
+        <a
+            :href="`https://www.google.com/maps/@${latitude},${longitude},16.5z`"
+            target="_blank"
+            class="text-pink-600 underline leading-6"
+        >{{ location }}</a>
       </div>
       <div class="flex items-center gap-1">
         <div class="w-6">
@@ -52,12 +56,52 @@ export default {
       longitude: '',
       score: 4.4,
       products: [
-        { id: 1, name: 'Pack 10 mix almendras pasas y maníi', image: 'https://thumbs.dreamstime.com/z/gourmet-meal-2431449.jpg', price: '4000', discount: 50, realPrice: '8000' },
-        { id: 1, name: 'Pack 10 mix almendras pasas y maníi', image: 'http://www.theglutengal.com/wp-content/uploads/2008/09/8-12-08-square-meal.jpg', price: '4000', discount: 50, realPrice: '8000' },
-        { id: 1, name: 'Pack 10 mix almendras pasas y maníi', image: 'https://miro.medium.com/max/1400/1*sNhk33H9Te79RJqBuYxBsQ.jpeg', price: '4000', discount: 50, realPrice: '8000' },
-        { id: 1, name: 'Pack 10 mix almendras pasas y maníi', image: 'https://thumbs.dreamstime.com/z/plated-pork-main-meal-gourmet-square-white-plate-63563837.jpg', price: '4000', discount: 50, realPrice: '8000' },
-        { id: 1, name: 'Pack 10 mix almendras pasas y maníi', image: 'https://www.foodnavigator-usa.com/var/wrbm_gb_food_pharma/storage/images/publications/food-beverage-nutrition/foodnavigator-usa.com/article/2022/01/14/the-meal-plan-from-the-future-squareat-gives-new-meaning-to-square-meals/13156569-1-eng-GB/The-meal-plan-from-the-future-SquarEat-gives-new-meaning-to-square-meals.jpg', price: '', discount: 50 },
-        { id: 1, name: 'Pack 10 mix almendras pasas y maníi', image: 'https://media-cldnry.s-nbcnews.com/image/upload/newscms/2021_34/1765653/squareat-inline-02-khu-210825.png', price: '', discount: 50 },
+        {
+          id: 1,
+          name: 'Pack 10 mix almendras pasas y maníi',
+          image: 'https://thumbs.dreamstime.com/z/gourmet-meal-2431449.jpg',
+          price: '4000',
+          discount: 50,
+          realPrice: '8000'
+        },
+        {
+          id: 1,
+          name: 'Pack 10 mix almendras pasas y maníi',
+          image: 'http://www.theglutengal.com/wp-content/uploads/2008/09/8-12-08-square-meal.jpg',
+          price: '4000',
+          discount: 50,
+          realPrice: '8000'
+        },
+        {
+          id: 1,
+          name: 'Pack 10 mix almendras pasas y maníi',
+          image: 'https://miro.medium.com/max/1400/1*sNhk33H9Te79RJqBuYxBsQ.jpeg',
+          price: '4000',
+          discount: 50,
+          realPrice: '8000'
+        },
+        {
+          id: 1,
+          name: 'Pack 10 mix almendras pasas y maníi',
+          image: 'https://thumbs.dreamstime.com/z/plated-pork-main-meal-gourmet-square-white-plate-63563837.jpg',
+          price: '4000',
+          discount: 50,
+          realPrice: '8000'
+        },
+        {
+          id: 1,
+          name: 'Pack 10 mix almendras pasas y maníi',
+          image: 'https://www.foodnavigator-usa.com/var/wrbm_gb_food_pharma/storage/images/publications/food-beverage-nutrition/foodnavigator-usa.com/article/2022/01/14/the-meal-plan-from-the-future-squareat-gives-new-meaning-to-square-meals/13156569-1-eng-GB/The-meal-plan-from-the-future-SquarEat-gives-new-meaning-to-square-meals.jpg',
+          price: '',
+          discount: 50
+        },
+        {
+          id: 1,
+          name: 'Pack 10 mix almendras pasas y maníi',
+          image: 'https://media-cldnry.s-nbcnews.com/image/upload/newscms/2021_34/1765653/squareat-inline-02-khu-210825.png',
+          price: '',
+          discount: 50
+        },
       ]
     }
   }

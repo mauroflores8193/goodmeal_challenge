@@ -11,5 +11,9 @@
 }
 
 .price {
-    @apply font-bold text-sm text-pink-600;
+    @apply text-sm text-pink-600 font-bold;
+}
+
+.real-price {
+    @apply text-sm text-gray-400 font-bold line-through;
 }

@@ -6,7 +6,7 @@
     </div>
     <div class="flex gap-1 flex-wrap">
       <div class="price">{{ price | formatPrice }}</div>
-      <div class="text-sm text-gray-400 text-bold line-through">{{ realPrice | formatPrice }}</div>
+      <div class="real-price">{{ realPrice | formatPrice }}</div>
     </div>
     <TagDiscount :discount="discount" class="m-auto"/>
     <div class="text-gray-500 text-xs">{{ name }}</div>
@@ -15,7 +15,7 @@
 
 <script>
 import PlusCircleIcon from '../../assets/images/icons/plus-circle.svg'
-import TagDiscount from "../atoms/TagDiscount.vue";
+import TagDiscount from "../atoms/TagDiscount.vue"
 
 export default {
   name: "ProductCard",

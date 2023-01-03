@@ -2,9 +2,11 @@
   <div class="flex flex-col h-full">
     <Header title="Mis órdenes"/>
     <div class="px-6 flex flex-col gap-4 flex-1 overflow-y-auto">
-      <OrderCard v-for="(order, index) in orders" v-bind="order" :key="index" />
+      <router-link v-for="(order, index) in orders" :key="index" :to="'/order-detail/'+order.id">
+        <OrderCard v-bind="order"/>
+      </router-link>
     </div>
-    <Nav />
+    <Nav/>
   </div>
 </template>
 

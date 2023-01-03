@@ -4,9 +4,7 @@
       <div class="text-xl text-teal-500 font-bold mb-4">{{ pickUpDate }}</div>
       <DescriptionItem v-for="(item, index) in infoItems" v-bind="item" :key="index"/>
     </div>
-    <router-link :to="'/order-detail/'+id">
-      <ArrowRightCircleIcon class="w-7 h-7 text-gray-200"/>
-    </router-link>
+    <ArrowRightCircleIcon class="w-7 h-7 text-gray-200"/>
   </Card>
 </template>
 

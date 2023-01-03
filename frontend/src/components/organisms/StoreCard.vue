@@ -9,7 +9,7 @@
       <div class="font-bold text-xl">{{ storeName }}</div>
       <div class="flex gap-2 mb-1">
         <div class="price">Desde {{ minProductPrice | formatPrice }}</div>
-        <div class="text-sm text-gray-400 text-bold line-through">{{ minProductRealPrice | formatPrice }}</div>
+        <div class="real-price">{{ minProductRealPrice | formatPrice }}</div>
       </div>
       <div class="flex gap-6">
         <div class="flex items-center gap-1">
