@@ -28,7 +28,7 @@ export default {
       return [
         { title: 'Tienda:', description: this.storeName },
         { title: 'N° de orden:', description: this.id },
-        { title: 'Monto total:', description: this.total },
+        { title: 'Monto total:', description: this.$options.filters.formatPrice(this.total) },
         { title: 'Horario:', description: this.pickUpTime },
       ]
     }

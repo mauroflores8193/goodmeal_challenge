@@ -62,7 +62,7 @@ export default {
           image: 'https://thumbs.dreamstime.com/z/gourmet-meal-2431449.jpg',
           price: '4000',
           discount: 50,
-          realPrice: '8000'
+          oldPrice: '8000'
         },
         {
           id: 1,
@@ -70,7 +70,7 @@ export default {
           image: 'http://www.theglutengal.com/wp-content/uploads/2008/09/8-12-08-square-meal.jpg',
           price: '4000',
           discount: 50,
-          realPrice: '8000'
+          oldPrice: '8000'
         },
         {
           id: 1,
@@ -78,7 +78,7 @@ export default {
           image: 'https://miro.medium.com/max/1400/1*sNhk33H9Te79RJqBuYxBsQ.jpeg',
           price: '4000',
           discount: 50,
-          realPrice: '8000'
+          oldPrice: '8000'
         },
         {
           id: 1,
@@ -86,7 +86,7 @@ export default {
           image: 'https://thumbs.dreamstime.com/z/plated-pork-main-meal-gourmet-square-white-plate-63563837.jpg',
           price: '4000',
           discount: 50,
-          realPrice: '8000'
+          oldPrice: '8000'
         },
         {
           id: 1,

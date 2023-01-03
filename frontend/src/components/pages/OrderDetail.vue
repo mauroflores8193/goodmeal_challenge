@@ -6,7 +6,7 @@
       <DescriptionItem v-for="(item, index) in infoItems" v-bind="item" :key="index"/>
       <hr class="my-4"/>
       <div class="font-medium">Productos</div>
-      <div v-for="(item, index) in order.detail" :key="index" class="flex justify-between">
+      <div v-for="(item, index) in detail" :key="index" class="flex justify-between">
         <div>{{ item.amount }}</div>
         <div>{{ item.name }}</div>
         <div>{{ item.price | formatPrice }}</div>

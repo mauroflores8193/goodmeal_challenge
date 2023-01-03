@@ -6,7 +6,7 @@
     </div>
     <div class="flex gap-1 flex-wrap">
       <div class="price">{{ price | formatPrice }}</div>
-      <div class="real-price">{{ realPrice | formatPrice }}</div>
+      <div class="old-price">{{ oldPrice | formatPrice }}</div>
     </div>
     <TagDiscount :discount="discount" class="m-auto"/>
     <div class="text-gray-500 text-xs">{{ name }}</div>
@@ -25,7 +25,7 @@ export default {
     name: String,
     image: String,
     price: Number,
-    realPrice: Number,
+    oldPrice: Number,
     discount: Number,
   }
 }
