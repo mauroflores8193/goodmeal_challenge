@@ -2,15 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class StoreFactory extends Factory {
     public function definition() {
         return [
             'name' => $this->faker->name(),
-            'address' => 'address',
-            'location' => 'location',
+            'address' => $this->faker->paragraph(1),
+            'location' => $this->faker->paragraph(1),
             'latitude' => $this->faker->randomFloat(10, -90, 90),
             'longitude' => $this->faker->randomFloat(10, -180, 180),
             'icon' => $this->getIcon(),
