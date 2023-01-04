@@ -3,9 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Carbon;
 
 class StoreFactory extends Factory {
     public function definition() {
+        $startTime = $this->faker->time();
         return [
             'name' => $this->faker->name(),
             'address' => $this->faker->paragraph(1),
@@ -15,8 +17,8 @@ class StoreFactory extends Factory {
             'score' => $this->faker->randomFloat(1, 0, 5),
             'icon' => $this->getIcon(),
             'banner' => $this->getBanner(),
-            'start_time' => $this->faker->time(),
-            'end_time' => $this->faker->time(),
+            'start_time' => $startTime,
+            'end_time' => Carbon::parse($startTime)->addHours($this->faker->numberBetween(7, 10))->format('H:i:s'),
         ];
     }
 

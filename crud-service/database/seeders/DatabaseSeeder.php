@@ -21,11 +21,13 @@ class DatabaseSeeder extends Seeder {
         $user->password = Hash::make('password');
         $user->save();
 
-        for($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             $userNew = User::factory()->create();
-            for($j = 0; $j < rand(1, 5); $j++) {
-                $storeNew = Store::factory()->for($userNew)->create();
-                Product::factory(rand(1, 15))->for($userNew)->for($storeNew)->create();
+            for ($j = 0; $j < rand(1, 5); $j++) {
+                Store::factory()
+                    ->for($userNew)
+                    ->has(Product::factory()->for($userNew)->count(rand(1, 15)))
+                    ->create();
             }
         }
     }
