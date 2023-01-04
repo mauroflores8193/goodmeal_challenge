@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <StoreHeader :icon="icon" :banner="banner">
+    <StoreHeader :icon="icon" :banner="banner" banner-class="rounded-t-xl">
       <FavoriteButton :active="isFavorite" class="absolute right-4 top-0"/>
       <TagAttentionHours :label="attentionHours" class="absolute left-4 top-2"/>
       <TagDeliveryType :label="deliveryType" class="absolute left-4 bottom-2"/>
