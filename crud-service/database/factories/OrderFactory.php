@@ -12,7 +12,7 @@ class OrderFactory extends Factory {
         return [
             'delivery_type' => $deliveryType,
             'delivery_date' => $this->faker->date('Y:m:d'),
-            'shipping_cost' => $deliveryType == 'shipping' ? $this->faker->numberBetween(1000, 5000): null
+            'shipping_cost' => $deliveryType == 'shipping' ? $this->faker->numberBetween(1000, 5000): 0
         ];
     }
 }
