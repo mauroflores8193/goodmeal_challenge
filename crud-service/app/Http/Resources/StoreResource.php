@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Product;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Carbon;
 
@@ -15,8 +16,8 @@ class StoreResource extends JsonResource {
             'startTime' => Carbon::createFromFormat('H:i:s', $this->start_time)->format('H:i'),
             'endTime' => Carbon::createFromFormat('H:i:s', $this->end_time)->format('H:i'),
             'deliveryType' => "Retiro o delivery",
-            'minPrice' => $this->getCheaperProduct()->price,
-            'minOldPrice' => $this->getCheaperProduct()->old_price,
+            'minPrice' => $this->getCheaperProduct() ? $this->getCheaperProduct()->price : null,
+            'minOldPrice' => $this->getCheaperProduct() ? $this->getCheaperProduct()->old_price: null,
             'distanceTime' => 0,
             'distanceKm' => 0,
             'ordersCount' => 0,
@@ -25,6 +26,7 @@ class StoreResource extends JsonResource {
             'location' => $this->location,
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
+            'products' => ProductResource::collection($this->products()->withStock()->get())
         ];
     }
 }

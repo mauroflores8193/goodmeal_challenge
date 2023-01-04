@@ -22,7 +22,7 @@
         </div>
         <div>Horario de retiro: {{ attentionHours }}</div>
       </div>
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-1">
         <div class="font-medium">Calificación</div>
         <StarIcon class="w-4 h-4 text-pink-500"/>
         <div>{{ score }} / 5.0</div>

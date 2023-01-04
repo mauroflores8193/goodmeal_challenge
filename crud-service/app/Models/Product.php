@@ -26,4 +26,12 @@ class Product extends Model {
         'store_id',
         'user_id',
     ];
+
+    public function getDiscountAttribute() {
+        return round(100 * $this->price / $this->old_price);
+    }
+
+    public function scopeWithStock($query) {
+        return $query->where('amount', '>', 0);
+    }
 }
