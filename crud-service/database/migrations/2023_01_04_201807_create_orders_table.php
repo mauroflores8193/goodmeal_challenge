@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('delivery_type');
             $table->date('delivery_date');
-            $table->float('delivery_cost');
+            $table->float('shipping_cost');
             $table->timestamps();
             $table->softDeletes();
         });

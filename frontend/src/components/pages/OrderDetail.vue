@@ -14,7 +14,7 @@
       <hr class="my-4"/>
       <div class="flex justify-between">
         <div>Delivery</div>
-        <div>{{ deliveryCost | formatPrice }}</div>
+        <div>{{ shippingCost | formatPrice }}</div>
       </div>
       <div class="flex justify-between">
         <div class="font-medium">Monto total</div>
@@ -46,7 +46,7 @@ export default {
       detail: [
         { amount: 2, name: 'Kit XXL', price: 13500 }
       ],
-      deliveryCost: 3500,
+      shippingCost: 3500,
       total: 30500
     }
   },
