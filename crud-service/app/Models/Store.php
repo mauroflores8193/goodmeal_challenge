@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -36,6 +35,6 @@ class Store extends Model {
     }
 
     public function getCheaperProduct() {
-        return $this->products()->orderBy('price')->first();
+        return $this->products()->where('amount', '>', 0)->orderBy('price')->first();
     }
 }
