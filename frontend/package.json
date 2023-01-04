@@ -1,5 +1,5 @@
 {
-  "name": "GoodmealApp",
+  "name": "goodmeal-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.13",
+    "axios": "^1.2.2",
     "ci": "^2.2.0",
     "core-js": "^3.14.0",
     "postcss": "^8.4.20",
