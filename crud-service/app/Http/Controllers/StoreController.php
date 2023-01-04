@@ -13,4 +13,8 @@ class StoreController extends Controller {
         $ids = array_column($storesWithStock->toArray(), 'id');
         return response()->json(StoreResource::collection(Store::whereIn('id', $ids)->get()));
     }
+
+    public function show($id): JsonResponse {
+        return response()->json(new StoreResource(Store::findOrFail($id)));
+    }
 }
