@@ -28,4 +28,29 @@ class Order extends Model {
     public function details() {
         return $this->hasMany(OrderDetail::class);
     }
+
+    public function getStoreNameAttribute() {
+        return $this->store->name;
+    }
+
+
+    public function getStoreAddressAttribute() {
+        return $this->store->address;
+    }
+
+    public function getTotalAttribute() {
+        $total = 0;
+        foreach ($this->details as $detail) {
+            $total += $detail->total;
+        }
+        return $total;
+    }
+
+    public function getDeliveryStarTimeAttribute() {
+        return $this->store->start_time;
+    }
+
+    public function getDeliveryEndTimeAttribute() {
+        return $this->store->end_time;
+    }
 }

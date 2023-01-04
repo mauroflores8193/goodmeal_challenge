@@ -28,6 +28,22 @@ class Store extends Model {
         return $this->hasMany(Product::class);
     }
 
+    public function orders() {
+        return $this->hasMany(Order::class);
+    }
+
+    public function isFavorite() {
+        return rand(0,1) == 1;
+    }
+
+    public function getDistanceTime() {
+        return rand(1, 45);
+    }
+
+    public function getDistanceKm() {
+        return rand(5, 60) / 10;
+    }
+
     public function scopeWithStock($query) {
         return $query->join('products', function ($join) {
             $join->on('stores.id', '=', 'products.store_id')->where('products.amount', '>', 0);

@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     attentionHours() {
-      return `Hoy ${this.store.startTime} - ${this.store.endTime}`
+      return `Hoy ${this.store.startTime} - ${this.store.endTime} hrs`
     }
   }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class OrderDetail extends Model {
-    use SoftDeletes, HasFactory;
+    use HasFactory;
 
     protected $fillable = [
         'order_id',
@@ -22,5 +22,13 @@ class OrderDetail extends Model {
 
     public function product() {
         return $this->belongsTo(Product::class);
+    }
+
+    public function getNameAttribute() {
+        return $this->product->name;
+    }
+
+    public function getTotalAttribute() {
+        return $this->amount * $this->price;
     }
 }

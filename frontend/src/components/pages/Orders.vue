@@ -25,15 +25,17 @@ export default {
           id: 466044,
           storeName: 'Fork Bilbao',
           total: 30500,
-          pickUpTime: '09:00 - 16:00 hrs',
-          pickUpDate: '25/11/22',
+          deliveryStarTime: '09:00',
+          deliveryEndTime: '16:00',
+          deliveryDate: '25/11/22',
         },
         {
           id: 466044,
           storeName: 'Fork Bilbao',
           total: 30500,
-          pickUpTime: '09:00 - 16:00 hrs',
-          pickUpDate: '25/11/22',
+          deliveryStarTime: '09:00',
+          deliveryEndTime: '16:00',
+          deliveryDate: '25/11/22',
         }
       ]
     }

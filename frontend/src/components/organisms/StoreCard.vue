@@ -57,7 +57,7 @@ export default {
   },
   computed: {
     attentionHours: function () {
-      return `Hoy ${this.startTime} - ${this.endTime}`
+      return `Hoy ${this.startTime} - ${this.endTime} hrs`
     }
   },
   filters: {
