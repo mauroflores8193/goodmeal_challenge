@@ -14,31 +14,14 @@
 import Header from "../molecules/Header.vue";
 import OrderCard from "../organisms/OrderCard.vue";
 import Nav from "../molecules/Nav.vue";
+import orderApi from "../../api/order-api";
 
 export default {
   name: "Orders",
   components: { OrderCard, Header, Nav },
-  data: function () {
-    return {
-      orders: [
-        {
-          id: 466044,
-          storeName: 'Fork Bilbao',
-          total: 30500,
-          deliveryStarTime: '09:00',
-          deliveryEndTime: '16:00',
-          deliveryDate: '25/11/22',
-        },
-        {
-          id: 466044,
-          storeName: 'Fork Bilbao',
-          total: 30500,
-          deliveryStarTime: '09:00',
-          deliveryEndTime: '16:00',
-          deliveryDate: '25/11/22',
-        }
-      ]
-    }
+  data: () => ({ orders: [] }),
+  async created() {
+    this.orders = await orderApi.getAll()
   }
 }
 </script>

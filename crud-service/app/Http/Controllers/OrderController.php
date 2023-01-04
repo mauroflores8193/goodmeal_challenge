@@ -9,7 +9,7 @@ use Illuminate\Http\JsonResponse;
 class OrderController extends Controller {
 
     public function index(): JsonResponse {
-        return response()->json(OrderResource::collection(Order::all()));
+        return response()->json(OrderResource::collection(Order::orderBy('id', 'DESC')->get()));
     }
 
     public function show($id): JsonResponse {

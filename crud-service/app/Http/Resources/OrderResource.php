@@ -13,7 +13,7 @@ class OrderResource extends JsonResource {
             'storeAddress' => $this->storeAddress,
             'shippingCost' => $this->shipping_cost,
             'total' => $this->total,
-            'deliveryDate' => $this->delivery_date,
+            'deliveryDate' => Carbon::createFromFormat('Y-m-d', $this->delivery_date)->format('d/m/Y'),
             'deliveryStarTime' => Carbon::createFromFormat('H:i:s', $this->deliveryStarTime)->format('H:i'),
             'deliveryEndTime' => Carbon::createFromFormat('H:i:s', $this->deliveryEndTime)->format('H:i'),
             'details' => OrderDetailResource::collection($this->details),
