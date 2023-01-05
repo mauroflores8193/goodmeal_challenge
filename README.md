@@ -24,6 +24,7 @@ El presente proyecto es un reto técnico desarrollado para la empresa GoodMeal
 - Construir los contenedores: `docker-compose build`
 - Iniciar el servicio: `docker-compose up -d`
 - Instalar las dependencias del backend: `docker-compose exec crud-service composer install`
+- Cambiamos el propietario de la carpeta storage: `docker-compose exec crud-service chown -R www-data:www-data storage`
 - Crear el acceso a storage: `docker-compose exec crud-service php artisan storage:link`
 - Ejecutar las migraciones: `docker-compose exec crud-service php artisan migrate`
 - Ejecutar los seeders: `docker-compose exec crud-service php artisan db:seed`

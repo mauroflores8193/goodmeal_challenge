@@ -39,7 +39,7 @@ class Order extends Model {
     }
 
     public function getTotalAttribute() {
-        $total = 0;
+        $total = $this->shipping_cost;
         foreach ($this->details as $detail) {
             $total += $detail->total;
         }
