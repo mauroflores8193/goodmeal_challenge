@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`increments value on click 1`] = `
+<div class="flex flex-col h-full">
+  <div class="h-16 flex relative items-center">
+    <!---->
+    <h1 class="text-lg font-medium mx-auto">Mis órdenes</h1>
+  </div>
+  <div class="px-6 flex flex-col gap-4 flex-1 overflow-y-auto"><a href="#/order-detail/3" class="">
+      <!----></a><a href="#/order-detail/2" class="">
+      <!----></a><a href="#/order-detail/1" class="">
+      <!----></a></div>
+  <nav class="flex h-20 justify-around items-center"><a href="#/" aria-current="page" class="router-link-exact-active router-link-active">
+      <div class="button-icon text-pink-500">
+        <!---->
+        <!---->
+        <div>Inicio</div>
+      </div>
+    </a> <a href="#/orders" class="">
+      <div class="button-icon">
+        <!---->
+        <!---->
+        <div>Órdenes</div>
+      </div>
+    </a> <a href="#/profile" class="">
+      <div class="button-icon">
+        <!---->
+        <!---->
+        <div>Perfil</div>
+      </div>
+    </a></nav>
+</div>
+`;
