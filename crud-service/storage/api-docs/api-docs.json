@@ -32,18 +32,80 @@
             },
             "post": {
                 "tags": [
-                    "Crear tienda"
+                    "Crear tienda (Usuarios autorizados)"
                 ],
-                "description": "Envia sus credenciales de acceso y obtendrá un token de autorización. Use el token para endpoints protedigos enviando en la cabecera de la petición: 'Authorization: Bearer YOUR_TOKEN'",
                 "operationId": "5e3f599d3d84279ebc59e8f1be7715e7",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "address",
+                                    "location",
+                                    "latitude",
+                                    "longitude",
+                                    "icon",
+                                    "banner",
+                                    "start_time",
+                                    "end_time"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "GoodMeal market"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "Av. Francisco Bilbao 2429"
+                                    },
+                                    "location": {
+                                        "type": "string",
+                                        "example": "Av nueva los leones 50, Providencia, Santiago, (Caracol los leones) Zona de delivery Store central"
+                                    },
+                                    "latitude": {
+                                        "type": "number",
+                                        "example": "-6.487795"
+                                    },
+                                    "longitude": {
+                                        "type": "number",
+                                        "example": "-76.370540"
+                                    },
+                                    "icon": {
+                                        "type": "file",
+                                        "example": ""
+                                    },
+                                    "banner": {
+                                        "type": "file",
+                                        "example": ""
+                                    },
+                                    "start_time": {
+                                        "type": "string",
+                                        "example": "08:00:00"
+                                    },
+                                    "end_time": {
+                                        "type": "string",
+                                        "example": "15:00:00"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
-                    "200": {
-                        "description": "TOKEN"
+                    "201": {
+                        "description": "Datos de la tienda creada"
                     },
                     "401": {
-                        "description": "Credenciales incorrectas."
+                        "description": "Unauthorized"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/api/admin/stores/{id}": {
@@ -113,6 +175,83 @@
                     },
                     "404": {
                         "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Actualizar tienda (Usuarios autorizados)"
+                ],
+                "operationId": "1677c01e2f1fa9a57b437e190335d71b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la tienda",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Nuevo nombre"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "Otra dirección"
+                                    },
+                                    "location": {
+                                        "type": "string",
+                                        "example": "Otra locación"
+                                    },
+                                    "latitude": {
+                                        "type": "number",
+                                        "example": "-5.487795"
+                                    },
+                                    "longitude": {
+                                        "type": "number",
+                                        "example": "-86.370540"
+                                    },
+                                    "icon": {
+                                        "type": "file",
+                                        "example": ""
+                                    },
+                                    "banner": {
+                                        "type": "file",
+                                        "example": ""
+                                    },
+                                    "start_time": {
+                                        "type": "string",
+                                        "example": "09:00:00"
+                                    },
+                                    "end_time": {
+                                        "type": "string",
+                                        "example": "18:00:00"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Not content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
                     }
                 },
                 "security": [

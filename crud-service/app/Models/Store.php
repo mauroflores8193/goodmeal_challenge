@@ -18,6 +18,8 @@ class Store extends Model {
         'start_time',
         'end_time',
         'user_id',
+        'icon',
+        'banner',
     ];
 
     public function user() {

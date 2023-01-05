@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Store;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class StoreController extends Controller {
@@ -23,6 +22,33 @@ class StoreController extends Controller {
         return response()->json(Store::all());
     }
 
+    /**
+     * @OA\Post(path="/api/admin/stores",
+     *     security={ {"sanctum": {} }},
+     *     tags={"Crear tienda (Usuarios autorizados)"},
+     *     @OA\MediaType(mediaType="multipart/form-data"),
+     *     @OA\RequestBody(
+     *       @OA\MediaType(
+     *           mediaType="multipart/form-data",
+     *           @OA\Schema(
+     *               type="object",
+     *               required={"name", "address", "location", "latitude", "longitude", "icon", "banner", "start_time", "end_time"},
+     *               @OA\Property(property="name", type="string", example="GoodMeal market"),
+     *               @OA\Property(property="address", type="string", example="Av. Francisco Bilbao 2429"),
+     *               @OA\Property(property="location", type="string", example="Av nueva los leones 50, Providencia, Santiago, (Caracol los leones) Zona de delivery Store central"),
+     *               @OA\Property(property="latitude", type="number", example="-6.487795"),
+     *               @OA\Property(property="longitude", type="number", example="-76.370540"),
+     *               @OA\Property(property="icon", type="file", example=""),
+     *               @OA\Property(property="banner", type="file", example=""),
+     *               @OA\Property(property="start_time", type="string", example="08:00:00"),
+     *               @OA\Property(property="end_time", type="string", example="15:00:00"),
+     *           ),
+     *       )
+     *     ),
+     *     @OA\Response(response=201, description="Datos de la tienda creada"),
+     *     @OA\Response(response=401, description="Unauthorized")
+     * )
+     */
     public function store(Request $request): JsonResponse {
         $data = $request->validate([
             'name' => 'required',
@@ -73,6 +99,39 @@ class StoreController extends Controller {
         return response()->json($store);
     }
 
+    /**
+     * @OA\Put(path="/api/admin/stores/{id}",
+     *     security={ {"sanctum": {} }},
+     *     tags={"Actualizar tienda (Usuarios autorizados)"},
+     *     @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          @OA\Schema(type="integer"),
+     *          required=true,
+     *          description="ID de la tienda",
+     *      ),
+     *     @OA\MediaType(mediaType="multipart/form-data"),
+     *     @OA\RequestBody(
+     *       @OA\MediaType(
+     *           mediaType="multipart/form-data",
+     *           @OA\Schema(
+     *               type="object",
+     *               @OA\Property(property="name", type="string", example="Nuevo nombre"),
+     *               @OA\Property(property="address", type="string", example="Otra dirección"),
+     *               @OA\Property(property="location", type="string", example="Otra locación"),
+     *               @OA\Property(property="latitude", type="number", example="-5.487795"),
+     *               @OA\Property(property="longitude", type="number", example="-86.370540"),
+     *               @OA\Property(property="icon", type="file", example=""),
+     *               @OA\Property(property="banner", type="file", example=""),
+     *               @OA\Property(property="start_time", type="string", example="09:00:00"),
+     *               @OA\Property(property="end_time", type="string", example="18:00:00"),
+     *           ),
+     *       )
+     *     ),
+     *     @OA\Response(response=204, description="Not content"),
+     *     @OA\Response(response=401, description="Unauthorized")
+     * )
+     */
     public function update(Request $request, $id): JsonResponse {
         $this->authorize('update', Store::findOrFail($id));
         $request->validate([
