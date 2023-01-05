@@ -1,0 +1,20 @@
+@startuml
+
+title Modelo del dmonio
+
+
+object user
+object seller
+object customer
+object store
+object product
+object order
+
+user <|-- seller
+user <|-- customer
+seller --> "1..*" store
+store --> "1..*" product
+order *--> product
+customer --> order
+
+@enduml

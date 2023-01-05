@@ -49,8 +49,26 @@ Una vez ejecutados los test de crud-service hay que volver a ejecutar
 
 ### Endpoints 📄
 
-Para probar los endpoints, una vez iniciado los servicios ingrese al siguiente enlace: 
+Para probar los endpoints, una vez iniciado los servicios ingrese al siguiente enlace:
 [http://localhost:8000/api/documentation](http://localhost:8000/api/documentation)
+
+### Diagrams
+
+- Modelo del dominio: representa todos los diversos conceptos que manejamos y como se relacionan entre ellos.
+
+![Model del dominio](docs/domain-model-diagram.png "Model del dominio")
+
+- Diagrama de clases: contiene las clases con algunos atributos y métodos esenciales, además de las dependencias entre
+  ellos. Está hecho a un nivel más del lado del análisis, no tanto del diseño, ya que no nos centramos en ninguna
+  tecnología en particular
+
+![Diagrama de clases](docs/class-diagram.png "Diagrama de clases")
+
+- Diagrama de componentes: representan los componentes del software, en esta ocasión a nivel de una arquitectura de
+  fronted (vue) y backend (laravel) haciendo referencia que en la parte del backend se dividió un subcomponente admin
+  para implementar los CRUDs de tiendas y productos solicitados en este reto técnico.
+
+![Diagrama de componentes](docs/component-diagram.png "Diagrama de componentes")
 
 ### Autores ✒️
 

@@ -1,0 +1,27 @@
+@startuml
+
+title Diagrama de componentes
+
+package "FrontEnd" {
+    component [Graphic User\nInterface (Vue)] as GUI
+}
+
+interface "Rest API" as api
+
+node "Crud Service (Laravel)" {
+    component "Business Logic" as BL {
+      package admin
+      note right of admin : - CRUD de tiendas\ny productos \n- Requiere TOKEN
+    }
+    note left of BL : Todas las\nfuncionalidades
+    [Data Access] as DA  
+} 
+
+database "MySql"
+
+GUI -down-( api
+BL -up- api
+BL -- DA
+DA .. [MySql]
+
+@enduml

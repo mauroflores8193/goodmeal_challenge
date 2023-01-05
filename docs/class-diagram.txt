@@ -1,0 +1,43 @@
+@startuml
+
+title Diagrama de clases
+
+class Order {
+  -customer: User
+  -store: Store
+  -date
+  +getStoreName()
+  +getTotal()
+}
+class OrderDetail {
+  -product: Product
+  -amount
+  -price
+  +getName()
+  +getTotal()
+}
+class Product {
+  -store: Store
+  -name
+  -stock
+  -price
+  +withStock()
+  +getDiscount()
+  +getImageUrl()
+}
+class Store {
+  -seller: User
+  -name
+  +getIconUrl()
+  +getBannerUrl()
+}
+class User
+
+Store --> User
+Order --> Store
+Order --> User
+Order *--> OrderDetail
+OrderDetail --> Product
+Product --> Store
+
+@enduml
