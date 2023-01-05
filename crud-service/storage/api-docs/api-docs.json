@@ -13,7 +13,7 @@
         "/api/admin/stores": {
             "get": {
                 "tags": [
-                    "Listar tiendas (Usuarios autorizados)"
+                    "admin/store"
                 ],
                 "operationId": "daacb93aaa654b4fdc47881f94600ed6",
                 "responses": {
@@ -32,7 +32,7 @@
             },
             "post": {
                 "tags": [
-                    "Crear tienda (Usuarios autorizados)"
+                    "admin/store"
                 ],
                 "operationId": "5e3f599d3d84279ebc59e8f1be7715e7",
                 "requestBody": {
@@ -111,7 +111,7 @@
         "/api/admin/stores/{id}": {
             "get": {
                 "tags": [
-                    "Mostrar datos de una tienda (Usuarios autorizados)"
+                    "admin/store"
                 ],
                 "description": "Envia como parámetro el ID de una tienda y le retorna sus datos. El usuario autorizado tiene que ser el creador de la tienda",
                 "operationId": "8a6fa02537b5ff997abb4a174fb9a3d0",
@@ -146,48 +146,11 @@
                     }
                 ]
             },
-            "delete": {
+            "put": {
                 "tags": [
-                    "Eliminar datos de una tienda (Usuarios autorizados)"
+                    "admin/store"
                 ],
-                "description": "Envia como parámetro el ID de una tienda y se eliminan los datos. El usuario autorizado tiene que ser el creador de la tienda",
-                "operationId": "55a75c1bd29ccdb6875aa6192870540d",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "ID de la tienda",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "Not Content"
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    }
-                },
-                "security": [
-                    {
-                        "sanctum": []
-                    }
-                ]
-            },
-            "patch": {
-                "tags": [
-                    "Actualizar tienda (Usuarios autorizados)"
-                ],
-                "operationId": "1677c01e2f1fa9a57b437e190335d71b",
+                "operationId": "727c234b1c3ce86737c75e6b7f75d427",
                 "parameters": [
                     {
                         "name": "id",
@@ -259,12 +222,49 @@
                         "sanctum": []
                     }
                 ]
+            },
+            "delete": {
+                "tags": [
+                    "admin/store"
+                ],
+                "description": "Envia como parámetro el ID de una tienda y se eliminan los datos. El usuario autorizado tiene que ser el creador de la tienda",
+                "operationId": "55a75c1bd29ccdb6875aa6192870540d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la tienda",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Not Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/api/login": {
             "post": {
                 "tags": [
-                    "Obtener token de autorización"
+                    "auth"
                 ],
                 "description": "Envia sus credenciales de acceso y obtendrá un token de autorización. Use el token para endpoints protedigos enviando en la cabecera de la petición: 'Authorization: Bearer YOUR_TOKEN'",
                 "operationId": "a3b306d14572d1f4bd6c064b3233e7b8",
@@ -302,7 +302,7 @@
         "/api/orders": {
             "get": {
                 "tags": [
-                    "Listar órdenes"
+                    "orders"
                 ],
                 "operationId": "2cd7e03021e72d9d799c12dfe179c865",
                 "responses": {
@@ -318,7 +318,7 @@
         "/api/orders/{id}": {
             "get": {
                 "tags": [
-                    "Mostrar datos de una órden"
+                    "orders"
                 ],
                 "description": "Envia como parámetro el ID de una órden y le retorna sus datos",
                 "operationId": "c29621029e70f65247909d3e09031118",
@@ -346,7 +346,7 @@
         "/api/stores": {
             "get": {
                 "tags": [
-                    "Listar tiendas"
+                    "stores"
                 ],
                 "operationId": "789854b8f9730d47f1ba52ca5e610238",
                 "responses": {
@@ -359,7 +359,7 @@
         "/api/stores/{id}": {
             "get": {
                 "tags": [
-                    "Mostrar datos de una tienda"
+                    "stores"
                 ],
                 "description": "Envia como parámetro el ID de una tienda y le retorna sus datos",
                 "operationId": "cd24cde4c43f6c4aeb2ed9725fca9624",

@@ -16,7 +16,7 @@ class AuthController extends Controller {
     /**
      * @OA\Post(
      *   path="/api/login",
-     *   tags={"Obtener token de autorización"},
+     *   tags={"auth"},
      *   description="Envia sus credenciales de acceso y obtendrá un token de autorización. Use el token para endpoints protedigos enviando en la cabecera de la petición: 'Authorization: Bearer YOUR_TOKEN'",
      *   @OA\RequestBody(
      *       required=true,

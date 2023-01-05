@@ -10,7 +10,7 @@ class StoreController extends Controller {
 
     /**
      * @OA\Get(path="/api/stores",
-     *     tags={"Listar tiendas"},
+     *     tags={"stores"},
      *     @OA\Response(response=200, description="Lista todas las tiendas con stock.")
      * )
      */
@@ -22,7 +22,7 @@ class StoreController extends Controller {
 
     /**
      * @OA\Get(path="/api/stores/{id}",
-     *     tags={"Mostrar datos de una tienda"},
+     *     tags={"stores"},
      *     description="Envia como parámetro el ID de una tienda y le retorna sus datos",
      *     @OA\Parameter(
      *          name="id",

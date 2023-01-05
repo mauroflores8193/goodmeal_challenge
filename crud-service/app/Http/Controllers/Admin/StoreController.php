@@ -13,7 +13,7 @@ class StoreController extends Controller {
     /**
      * @OA\Get(path="/api/admin/stores",
      *     security={ {"sanctum": {} }},
-     *     tags={"Listar tiendas (Usuarios autorizados)"},
+     *     tags={"admin/stores"},
      *     @OA\Response(response=200, description="Lista todas las tiendas."),
      *     @OA\Response(response=401, description="Unauthorized")
      * )
@@ -25,7 +25,7 @@ class StoreController extends Controller {
     /**
      * @OA\Post(path="/api/admin/stores",
      *     security={ {"sanctum": {} }},
-     *     tags={"Crear tienda (Usuarios autorizados)"},
+     *     tags={"admin/stores"},
      *     @OA\MediaType(mediaType="multipart/form-data"),
      *     @OA\RequestBody(
      *       @OA\MediaType(
@@ -78,7 +78,7 @@ class StoreController extends Controller {
     /**
      * @OA\Get(path="/api/admin/stores/{id}",
      *     security={ {"sanctum": {} }},
-     *     tags={"Mostrar datos de una tienda (Usuarios autorizados)"},
+     *     tags={"admin/stores"},
      *     description="Envia como parámetro el ID de una tienda y le retorna sus datos. El usuario autorizado tiene que ser el creador de la tienda",
      *     @OA\Parameter(
      *          name="id",
@@ -102,7 +102,7 @@ class StoreController extends Controller {
     /**
      * @OA\Put(path="/api/admin/stores/{id}",
      *     security={ {"sanctum": {} }},
-     *     tags={"Actualizar tienda (Usuarios autorizados)"},
+     *     tags={"admin/stores"},
      *     @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -152,7 +152,7 @@ class StoreController extends Controller {
     /**
      * @OA\Delete(path="/api/admin/stores/{id}",
      *     security={ {"sanctum": {} }},
-     *     tags={"Eliminar datos de una tienda (Usuarios autorizados)"},
+     *     tags={"admin/stores"},
      *     description="Envia como parámetro el ID de una tienda y se eliminan los datos. El usuario autorizado tiene que ser el creador de la tienda",
      *     @OA\Parameter(
      *          name="id",

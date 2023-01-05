@@ -10,7 +10,7 @@ class OrderController extends Controller {
 
     /**
      * @OA\Get(path="/api/orders",
-     *     tags={"Listar órdenes"},
+     *     tags={"orders"},
      *     @OA\Response(response=200, description="Lista todas las órdenes."),
      *     @OA\Response(response="default", description="Ha ocurrido un error.")
      * )
@@ -21,7 +21,7 @@ class OrderController extends Controller {
 
     /**
      * @OA\Get(path="/api/orders/{id}",
-     *     tags={"Mostrar datos de una órden"},
+     *     tags={"orders"},
      *     description="Envia como parámetro el ID de una órden y le retorna sus datos",
      *     @OA\Parameter(
      *          name="id",
