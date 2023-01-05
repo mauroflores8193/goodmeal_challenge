@@ -10,7 +10,7 @@ jest.mock('axios')
 const localVue = createLocalVue()
 localVue.use(VueRouter)
 const router = new VueRouter()
-test('increments value on click', async () => {
+test('Home.vue', async () => {
   axios.get.mockResolvedValue({ data: storeList });
   const tree = mount(Home, { localVue, router })
   await flushPromises();

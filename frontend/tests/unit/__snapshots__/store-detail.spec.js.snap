@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`increments value on click 1`] = `
+exports[`StoreDetail.vue 1`] = `
 <div class="flex flex-col h-full text-sm">
   <div class="px-6">
     <div class="h-16 flex relative items-center"><a href="#/" aria-current="page" class="absolute left-0 router-link-exact-active router-link-active"></a>

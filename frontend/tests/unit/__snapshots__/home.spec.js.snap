@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`increments value on click 1`] = `
+exports[`Home.vue 1`] = `
 <div class="flex flex-col h-full">
   <div class="h-16 flex relative items-center">
     <!---->

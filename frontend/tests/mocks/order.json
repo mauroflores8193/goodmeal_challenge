@@ -1,0 +1,18 @@
+{
+  "id": 8,
+  "storeName": "Chauncey Kihn",
+  "storeAddress": "Qui sapiente rerum a vitae sint necessitatibus. Delectus incidunt consequatur ut eveniet tenetur et voluptatem.",
+  "shippingCost": 4057,
+  "total": 17406,
+  "deliveryDate": "13\/03\/1986",
+  "deliveryStarTime": "16:10",
+  "deliveryEndTime": "00:10",
+  "details": [
+    {
+      "id": 8,
+      "amount": 2,
+      "name": "Wilma Fisher",
+      "total": 17406
+    }
+  ]
+}

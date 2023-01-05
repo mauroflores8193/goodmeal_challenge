@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderDetail.vue 1`] = `
+<div class="bg-teal-50 px-6 h-full text-sm">
+  <div class="h-16 flex relative items-center"><a href="#/orders" class="absolute left-0"></a>
+    <h1 class="text-lg font-medium mx-auto">Detalle de la orden</h1>
+  </div>
+  <div class="card px-6 relative py-12">
+    <div class="bg-teal-500 text-white w-fit px-4 py-1 text-sm rounded-b-2xl absolute top-0 right-6">Rescatada</div>
+    <h2 class="text-lg font-medium mb-4">Chauncey Kihn</h2>
+    <div class="flex gap-1">
+      <div class="font-medium">Dirección:</div>
+      <div>Qui sapiente rerum a vitae sint necessitatibus. Delectus incidunt consequatur ut eveniet tenetur et voluptatem.</div>
+    </div>
+    <div class="flex gap-1">
+      <div class="font-medium">Horario de retiro:</div>
+      <div>16:10 - 00:10 hrs</div>
+    </div>
+    <div class="flex gap-1">
+      <div class="font-medium">Fecha de retiro:</div>
+      <div>13/03/1986</div>
+    </div>
+    <div class="flex gap-1">
+      <div class="font-medium">N° de orden:</div>
+      <div>8</div>
+    </div>
+    <hr class="my-4">
+    <div class="font-medium">Productos</div>
+    <div class="flex justify-between gap-2">
+      <div>2</div>
+      <div>Wilma Fisher</div>
+      <div>17406</div>
+    </div>
+    <hr class="my-4">
+    <div class="flex justify-between">
+      <div>Delivery</div>
+      <div>4057</div>
+    </div>
+    <div class="flex justify-between">
+      <div class="font-medium">Monto total</div>
+      <div class="font-medium">17406</div>
+    </div>
+  </div>
+</div>
+`;

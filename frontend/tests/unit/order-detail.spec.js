@@ -1,23 +1,23 @@
 import { createLocalVue, mount } from '@vue/test-utils'
 import VueRouter from 'vue-router'
-import StoreDetail from '@/components/pages/StoreDetail.vue'
+import OrderDetail from '@/components/pages/OrderDetail.vue'
 import flushPromises from 'flush-promises'
 import axios from 'axios'
-import store from './../mocks/store.json'
+import order from './../mocks/order.json'
 
 jest.mock('axios')
 
 const localVue = createLocalVue()
 localVue.use(VueRouter)
 const router = new VueRouter()
-test('StoreDetail.vue', async () => {
+test('OrderDetail.vue', async () => {
   const mockRoute = {
     params: {
       id: 1
     }
   }
-  axios.get.mockResolvedValue({ data: store });
-  const tree = mount(StoreDetail, {
+  axios.get.mockResolvedValue({ data: order });
+  const tree = mount(OrderDetail, {
     localVue, router, global: {      mocks: { $route: mockRoute }    }, computed: {
       emoticon() {
         return '🤯'
