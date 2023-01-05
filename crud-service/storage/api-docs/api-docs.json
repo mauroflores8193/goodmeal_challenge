@@ -10,10 +10,248 @@
         }
     ],
     "paths": {
+        "/api/admin/stores/{storeId}/products": {
+            "get": {
+                "tags": [
+                    "admin/products"
+                ],
+                "operationId": "9cb72c6987cb8350c91458b2d6922581",
+                "parameters": [
+                    {
+                        "name": "storeId",
+                        "in": "path",
+                        "description": "ID de la tienda",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista todos los productos."
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "admin/products"
+                ],
+                "description": "Envia como parámetro el ID de una tienda. El usuario autorizado tiene que ser el creador de la tienda",
+                "operationId": "630d30bd0c7b7ca3cd286e8d45116bcf",
+                "parameters": [
+                    {
+                        "name": "storeId",
+                        "in": "path",
+                        "description": "ID de la tienda",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 46
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "price",
+                                    "old_price",
+                                    "amount",
+                                    "image"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Producto 1"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "example": "100"
+                                    },
+                                    "old_price": {
+                                        "type": "number",
+                                        "example": "150"
+                                    },
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": "10"
+                                    },
+                                    "image": {
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Datos del producto creado"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/products/{id}": {
+            "get": {
+                "tags": [
+                    "admin/products"
+                ],
+                "description": "Envia como parámetro el ID de un producto y le retorna sus datos. El usuario autorizado tiene que ser el creador del producto",
+                "operationId": "062dc33bdb34eef6fb8eed7af62254c6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del producto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Muestra datos del producto"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "admin/products"
+                ],
+                "operationId": "1234c087b21bd1df187ed757f67000ea",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del producto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Otro nombre"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "example": "25"
+                                    },
+                                    "old_price": {
+                                        "type": "number",
+                                        "example": "30"
+                                    },
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "image": {
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Not content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "admin/products"
+                ],
+                "description": "Envia como parámetro el ID de un producto y se eliminan los datos. El usuario autorizado tiene que ser el creador del producto",
+                "operationId": "07ca3329005fedce634d7afd90df29f5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del producto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Not Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
         "/api/admin/stores": {
             "get": {
                 "tags": [
-                    "admin/store"
+                    "admin/stores"
                 ],
                 "operationId": "daacb93aaa654b4fdc47881f94600ed6",
                 "responses": {
@@ -32,7 +270,7 @@
             },
             "post": {
                 "tags": [
-                    "admin/store"
+                    "admin/stores"
                 ],
                 "operationId": "5e3f599d3d84279ebc59e8f1be7715e7",
                 "requestBody": {
@@ -111,7 +349,7 @@
         "/api/admin/stores/{id}": {
             "get": {
                 "tags": [
-                    "admin/store"
+                    "admin/stores"
                 ],
                 "description": "Envia como parámetro el ID de una tienda y le retorna sus datos. El usuario autorizado tiene que ser el creador de la tienda",
                 "operationId": "8a6fa02537b5ff997abb4a174fb9a3d0",
@@ -148,7 +386,7 @@
             },
             "put": {
                 "tags": [
-                    "admin/store"
+                    "admin/stores"
                 ],
                 "operationId": "727c234b1c3ce86737c75e6b7f75d427",
                 "parameters": [
@@ -225,7 +463,7 @@
             },
             "delete": {
                 "tags": [
-                    "admin/store"
+                    "admin/stores"
                 ],
                 "description": "Envia como parámetro el ID de una tienda y se eliminan los datos. El usuario autorizado tiene que ser el creador de la tienda",
                 "operationId": "55a75c1bd29ccdb6875aa6192870540d",
