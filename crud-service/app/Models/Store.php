@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Store extends Model {
     use SoftDeletes, HasFactory;
@@ -35,7 +36,7 @@ class Store extends Model {
     }
 
     public function isFavorite() {
-        return rand(0,1) == 1;
+        return rand(0, 1) == 1;
     }
 
     public function getDistanceTime() {
@@ -54,5 +55,21 @@ class Store extends Model {
 
     public function getCheaperProduct() {
         return $this->products()->where('amount', '>', 0)->orderBy('price')->first();
+    }
+
+    public function getIconUrl() {
+        if (array_key_exists('host', parse_url($this->icon))) {
+            return $this->icon;
+        } else {
+            return Storage::disk('public')->url('uploads/'. $this->icon);
+        }
+    }
+
+    public function getBannerUrl() {
+        if (array_key_exists('host', parse_url($this->banner))) {
+            return $this->banner;
+        } else {
+            return Storage::disk('public')->url('uploads/'. $this->banner);
+        }
     }
 }

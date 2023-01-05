@@ -11,8 +11,8 @@ class StoreResource extends JsonResource {
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'banner' => $this->banner,
-            'icon' => $this->icon,
+            'banner' => $this->getBannerUrl(),
+            'icon' => $this->getIconUrl(),
             'startTime' => Carbon::createFromFormat('H:i:s', $this->start_time)->format('H:i'),
             'endTime' => Carbon::createFromFormat('H:i:s', $this->end_time)->format('H:i'),
             'deliveryType' => "Retiro o delivery",
