@@ -6,25 +6,12 @@ use App\Http\Resources\StoreResource;
 use App\Models\Store;
 use Illuminate\Http\JsonResponse;
 
-/**
- * @OA\Info(title="API Usuarios", version="1.0")
- *
- * @OA\Server(url="http://localhost:8000")
- */
 class StoreController extends Controller {
 
     /**
-     * @OA\Get(
-     *     path="/api/stores",
-     *     summary="Listar tiendas",
-     *     @OA\Response(
-     *         response=200,
-     *         description="Mostrar todas las tiendas."
-     *     ),
-     *     @OA\Response(
-     *         response="default",
-     *         description="Ha ocurrido un error."
-     *     )
+     * @OA\Get(path="/api/stores",
+     *     tags={"Listar tiendas"},
+     *     @OA\Response(response=200, description="Lista todas las tiendas con stock.")
      * )
      */
     public function index(): JsonResponse {
@@ -33,6 +20,21 @@ class StoreController extends Controller {
         return response()->json(StoreResource::collection(Store::whereIn('id', $ids)->get()));
     }
 
+    /**
+     * @OA\Get(path="/api/stores/{id}",
+     *     tags={"Mostrar datos de una tienda"},
+     *     description="Envia como parámetro el ID de una tienda y le retorna sus datos",
+     *     @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          @OA\Schema(type="integer"),
+     *          required=true,
+     *          description="ID de la tienda",
+     *      ),
+     *     @OA\Response(response=200, description="Muestra datos de la tienda"),
+     *     @OA\Response(response=404, description="Not Found")
+     * )
+     */
     public function show($id): JsonResponse {
         return response()->json(new StoreResource(Store::findOrFail($id)));
     }
