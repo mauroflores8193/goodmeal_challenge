@@ -49,7 +49,8 @@ Una vez ejecutados los test de crud-service hay que volver a ejecutar
 
 ### Endpoints 📄
 
-Para probar los endpoints ingrese al siguiente enlace: [http://localhost:8000/api/documentation](http://localhost:8000/api/documentation)
+Para probar los endpoints, una vez iniciado los servicios ingrese al siguiente enlace: 
+[http://localhost:8000/api/documentation](http://localhost:8000/api/documentation)
 
 ### Autores ✒️
 
