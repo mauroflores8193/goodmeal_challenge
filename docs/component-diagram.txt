@@ -2,13 +2,13 @@
 
 title Diagrama de componentes
 
-package "FrontEnd" {
-    component [Graphic User\nInterface (Vue)] as GUI
+package "FrontEnd (Vue)" {
+    component [Graphic User\nInterface] as GUI
 }
 
 interface "Rest API" as api
 
-node "Crud Service (Laravel)" {
+node "BackEnd (Laravel)" {
     component "Business Logic" as BL {
       package admin
       note right of admin : - CRUD de tiendas\ny productos \n- Requiere TOKEN
