@@ -1,0 +1,39 @@
+{
+  "id": 1,
+  "name": "Craig Terry",
+  "banner": "https:\/\/cdn.pixabay.com\/photo\/2015\/10\/11\/11\/20\/banner-982162__340.jpg",
+  "icon": "https:\/\/99designs-blog.imgix.net\/blog\/wp-content\/uploads\/2018\/10\/attachment_57810318-e1539290902964.png?auto=format&q=60&fit=max&w=930",
+  "startTime": "13:34",
+  "endTime": "20:34",
+  "deliveryType": "Retiro o delivery",
+  "minPrice": 446.4,
+  "minOldPrice": 1488,
+  "distanceTime": 11,
+  "distanceKm": 3.4,
+  "ordersCount": 3,
+  "isFavorite": true,
+  "score": 0.7,
+  "location": "Fuga temporibus dicta temporibus expedita quia.",
+  "latitude": "-0.0600252813",
+  "longitude": "-20.1813547873",
+  "products": [
+    {
+      "id": 1,
+      "name": "Filomena Welch I",
+      "image": "https:\/\/www.baltimoremagazine.com\/wp-content\/uploads\/2019\/05\/square-meal-4.jpg",
+      "price": 948.6,
+      "discount": 10,
+      "oldPrice": 9486,
+      "stock": 44
+    },
+    {
+      "id": 2,
+      "name": "Conor Ryan",
+      "image": "https:\/\/img.freepik.com\/free-psd\/american-food-square-flyer-template_23-2148477325.jpg?w=2000",
+      "price": 446.4,
+      "discount": 30,
+      "oldPrice": 1488,
+      "stock": 30
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`increments value on click 1`] = `
+<div class="flex flex-col h-full text-sm">
+  <div class="px-6">
+    <div class="h-16 flex relative items-center"><a href="#/" aria-current="page" class="absolute left-0 router-link-exact-active router-link-active"></a>
+      <h1 class="text-lg font-medium mx-auto">Craig Terry</h1>
+    </div>
+  </div>
+  <div class="relative"><img alt="banner" class="h-18 w-full" src="https://cdn.pixabay.com/photo/2015/10/11/11/20/banner-982162__340.jpg"> <img alt="logo" class="rounded-full absolute -bottom-6 right-8 w-16 h-16 bg-white" src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/10/attachment_57810318-e1539290902964.png?auto=format&amp;q=60&amp;fit=max&amp;w=930"> </div>
+  <div class="px-6 py-2 flex flex-col gap-4">
+    <div class="font-medium">Acerca de la tienda</div>
+    <div class="flex items-center gap-1">
+      <div class="w-6">
+        <!---->
+      </div> <a href="https://www.google.com/maps/@-0.0600252813,-20.1813547873,16.5z" target="_blank" class="text-pink-600 underline leading-6">Fuga temporibus dicta temporibus expedita quia.</a>
+    </div>
+    <div class="flex items-center gap-1">
+      <div class="w-6">
+        <!---->
+      </div>
+      <div>Horario de retiro: Hoy 13:34 - 20:34 hrs</div>
+    </div>
+    <div class="flex items-center gap-1">
+      <div class="font-medium">Calificación</div>
+      <!---->
+      <div>0.7 / 5.0</div>
+    </div>
+  </div>
+  <div class="grid grid-cols-3 gap-x-px gap-y-2 text-sm overflow-y-auto px-6">
+    <div class="card p-2 flex flex-col gap-2" stock="44">
+      <div class="relative"><img src="https://www.baltimoremagazine.com/wp-content/uploads/2019/05/square-meal-4.jpg" alt="" class="w-full h-20">
+        <!---->
+      </div>
+      <div class="flex gap-1 flex-wrap">
+        <div class="price">948.6</div>
+        <div class="old-price">9486</div>
+      </div>
+      <div class="text-white font-medium w-fit px-2 py-1 text-xs rounded-full m-auto bg-pink-400">
+        🤯 10% dcto.
+      </div>
+      <div class="text-gray-500 text-xs">Filomena Welch I</div>
+    </div>
+    <div class="card p-2 flex flex-col gap-2" stock="30">
+      <div class="relative"><img src="https://img.freepik.com/free-psd/american-food-square-flyer-template_23-2148477325.jpg?w=2000" alt="" class="w-full h-20">
+        <!---->
+      </div>
+      <div class="flex gap-1 flex-wrap">
+        <div class="price">446.4</div>
+        <div class="old-price">1488</div>
+      </div>
+      <div class="text-white font-medium w-fit px-2 py-1 text-xs rounded-full m-auto bg-orange-400">
+        🤩 30% dcto.
+      </div>
+      <div class="text-gray-500 text-xs">Conor Ryan</div>
+    </div>
+  </div>
+</div>
+`;

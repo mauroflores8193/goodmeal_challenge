@@ -1,6 +1,5 @@
-import { createLocalVue } from '@vue/test-utils'
+import { createLocalVue, mount } from '@vue/test-utils'
 import VueRouter from 'vue-router'
-import { mount } from '@vue/test-utils'
 import Home from '@/components/pages/Home.vue'
 import flushPromises from 'flush-promises'
 import axios from 'axios'

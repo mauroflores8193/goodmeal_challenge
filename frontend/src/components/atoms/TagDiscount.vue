@@ -12,12 +12,32 @@ export default {
   },
   computed: {
     emoticon: function () {
-      const emoticons = ['🤯', '😍', '😱', '🤩']
-      return emoticons[(Math.random() * emoticons.length) | 0]
+      let emoticon = '😍'
+      if(this.discount > 20) {
+        emoticon = '🤩'
+      }else if(this.discount > 40) {
+        emoticon = '😱'
+      } else if(this.discount > 0) {
+        emoticon = '🤯'
+      }
+      return emoticon
     },
     bgColor: function () {
-      const bgColors = ['bg-pink-400', 'bg-orange-400', 'bg-amber-400', 'bg-green-400', 'bg-emerald-400', 'bg-blue-400', 'bg-purple-400']
-      return bgColors[(Math.random() * bgColors.length) | 0]
+      let bgColors = 'bg-pink-400'
+      if(this.discount > 10) {
+        bgColors ='bg-orange-400'
+      }else if(this.discount > 20) {
+        bgColors =  'bg-amber-400'
+      } else if(this.discount > 30) {
+        bgColors ='bg-green-400'
+      } else if(this.discount > 40) {
+        bgColors ='bg-emerald-400'
+      } else if(this.discount > 50) {
+        bgColors ='bg-blue-400'
+      } else if(this.discount > 60) {
+        bgColors ='bg-purple-400'
+      }
+      return bgColors
     }
   }
 }
