@@ -44,6 +44,7 @@ services:
             - good-meal
 
     frontend:
+        image: good-meal-frontend
         container_name: good-meal-frontend
         build:
             context: frontend
