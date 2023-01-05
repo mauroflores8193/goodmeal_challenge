@@ -41,13 +41,12 @@ class OrderTest extends TestCase {
         $response = $this->get('/api/orders/' . $order->id);
         $response->assertOk()
             ->assertJson(function (AssertableJson $json) use ($order) {
-                $json->hasAll('details', 'deliveryStarTime', 'deliveryEndTime')
+                $json->hasAll('details', 'deliveryDate', 'deliveryStarTime', 'deliveryEndTime')
                     ->where('id', $order->id)
                     ->where('storeName', $order->storeName)
                     ->where('storeAddress', $order->storeAddress)
                     ->where('shippingCost', $order->shipping_cost)
                     ->where('total', (int) $order->total)
-                    ->where('deliveryDate', $order->delivery_date)
                     ->etc();
             });
     }
