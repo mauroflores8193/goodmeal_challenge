@@ -1,0 +1,28 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Usuarios",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000"
+        }
+    ],
+    "paths": {
+        "/api/stores": {
+            "get": {
+                "summary": "Listar tiendas",
+                "operationId": "789854b8f9730d47f1ba52ca5e610238",
+                "responses": {
+                    "200": {
+                        "description": "Mostrar todas las tiendas."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        }
+    }
+}

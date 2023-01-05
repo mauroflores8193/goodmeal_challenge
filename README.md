@@ -46,6 +46,10 @@ Para la ejecución de tests automáticos:
 Una vez ejecutados los test de crud-service hay que volver a ejecutar
 `docker-compose exec crud-service php artisan db:seed` para volver a poblar la base de datos
 
+### Endpoints 📄
+
+Para probar los endpoints ingrese al siguiente enlace: [http://localhost:8000/api/documentation](http://localhost:8000/api/documentation)
+
 ### Autores ✒️
 
 * **Autor:** Mauro Flores F., mauroflores8193@gmail.com
