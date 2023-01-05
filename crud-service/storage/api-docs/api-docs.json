@@ -10,18 +10,249 @@
         }
     ],
     "paths": {
-        "/api/stores": {
+        "/api/admin/stores": {
             "get": {
-                "summary": "Listar tiendas",
-                "operationId": "789854b8f9730d47f1ba52ca5e610238",
+                "tags": [
+                    "Listar tiendas (Usuarios autorizados)"
+                ],
+                "operationId": "daacb93aaa654b4fdc47881f94600ed6",
                 "responses": {
                     "200": {
-                        "description": "Mostrar todas las tiendas."
+                        "description": "Lista todas las tiendas."
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Crear tienda"
+                ],
+                "description": "Envia sus credenciales de acceso y obtendrá un token de autorización. Use el token para endpoints protedigos enviando en la cabecera de la petición: 'Authorization: Bearer YOUR_TOKEN'",
+                "operationId": "5e3f599d3d84279ebc59e8f1be7715e7",
+                "responses": {
+                    "200": {
+                        "description": "TOKEN"
+                    },
+                    "401": {
+                        "description": "Credenciales incorrectas."
+                    }
+                }
+            }
+        },
+        "/api/admin/stores/{id}": {
+            "get": {
+                "tags": [
+                    "Mostrar datos de una tienda (Usuarios autorizados)"
+                ],
+                "description": "Envia como parámetro el ID de una tienda y le retorna sus datos. El usuario autorizado tiene que ser el creador de la tienda",
+                "operationId": "8a6fa02537b5ff997abb4a174fb9a3d0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la tienda",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Muestra datos de la tienda"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Eliminar datos de una tienda (Usuarios autorizados)"
+                ],
+                "description": "Envia como parámetro el ID de una tienda y se eliminan los datos. El usuario autorizado tiene que ser el creador de la tienda",
+                "operationId": "55a75c1bd29ccdb6875aa6192870540d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la tienda",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Not Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Obtener token de autorización"
+                ],
+                "description": "Envia sus credenciales de acceso y obtendrá un token de autorización. Use el token para endpoints protedigos enviando en la cabecera de la petición: 'Authorization: Bearer YOUR_TOKEN'",
+                "operationId": "a3b306d14572d1f4bd6c064b3233e7b8",
+                "requestBody": {
+                    "description": "The Token Request",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "mflores@gmail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "TOKEN"
+                    },
+                    "401": {
+                        "description": "Credenciales incorrectas."
+                    }
+                }
+            }
+        },
+        "/api/orders": {
+            "get": {
+                "tags": [
+                    "Listar órdenes"
+                ],
+                "operationId": "2cd7e03021e72d9d799c12dfe179c865",
+                "responses": {
+                    "200": {
+                        "description": "Lista todas las órdenes."
                     },
                     "default": {
                         "description": "Ha ocurrido un error."
                     }
                 }
+            }
+        },
+        "/api/orders/{id}": {
+            "get": {
+                "tags": [
+                    "Mostrar datos de una órden"
+                ],
+                "description": "Envia como parámetro el ID de una órden y le retorna sus datos",
+                "operationId": "c29621029e70f65247909d3e09031118",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la órden a consultar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Muestra datos de la órden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/stores": {
+            "get": {
+                "tags": [
+                    "Listar tiendas"
+                ],
+                "operationId": "789854b8f9730d47f1ba52ca5e610238",
+                "responses": {
+                    "200": {
+                        "description": "Lista todas las tiendas con stock."
+                    }
+                }
+            }
+        },
+        "/api/stores/{id}": {
+            "get": {
+                "tags": [
+                    "Mostrar datos de una tienda"
+                ],
+                "description": "Envia como parámetro el ID de una tienda y le retorna sus datos",
+                "operationId": "cd24cde4c43f6c4aeb2ed9725fca9624",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la tienda",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Muestra datos de la tienda"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "sanctum": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer YOUR_TOKEN)",
+                "name": "Authorization",
+                "in": "header"
             }
         }
     }
